@@ -3,15 +3,28 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   devServer: {
     host: '127.0.0.1',
-    port: 1007,
+    port: 3000
   },
   modules: [
     '@pinia/nuxt',
     '@nuxt/image',
     '@pinia-plugin-persistedstate/nuxt',
-    'dayjs-nuxt',
     'nuxt-icon',
     'nuxt-typed-router',
-    '@nuxtjs/color-mode',
+    '@nuxtjs/color-mode'
   ],
+
+  // Frontend
+  css: ['~/assets/css/index.scss'],
+  vite: {
+    esbuild: {
+      drop: ['console', 'debugger']
+    }
+  },
+  piniaPersistedstate: {
+    cookieOptions: {
+      maxAge: 60 * 60 * 24 * 7,
+      sameSite: 'strict'
+    }
+  }
 })

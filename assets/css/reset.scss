@@ -1,0 +1,60 @@
+/* --------------------------------------------------------------
+   reset.css
+   * Resets default browser CSS.
+-------------------------------------------------------------- */
+
+:root {
+  --font-family: 'system-ui';
+}
+
+/* Reset default CSS styles for all elements */
+* {
+  box-sizing: border-box;
+  scrollbar-width: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+/* Font */
+html {
+  font-family: var(--font-family);
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure that button and select elements inherit the font family */
+button,
+select {
+  font-family: inherit;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+}
