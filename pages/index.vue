@@ -25,6 +25,8 @@ const slide: Slide[] = [
       :auto-scroll="true"
       :interval="2000"
     />
+
+    <HomeGame />
   </div>
 </template>
 
@@ -39,6 +41,6 @@ const slide: Slide[] = [
 }
 
 .carousel {
-  margin-top: 1rem;
+  margin: 2rem 0;
 }
 </style>

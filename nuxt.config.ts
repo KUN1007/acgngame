@@ -3,7 +3,7 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   devServer: {
     host: '127.0.0.1',
-    port: 3000
+    port: 3007
   },
   modules: [
     '@pinia/nuxt',
@@ -11,7 +11,8 @@ export default defineNuxtConfig({
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-icon',
     'nuxt-typed-router',
-    '@nuxtjs/color-mode'
+    '@nuxtjs/color-mode',
+    'dayjs-nuxt'
   ],
 
   // Frontend
@@ -19,6 +20,11 @@ export default defineNuxtConfig({
   vite: {
     esbuild: {
       drop: ['console', 'debugger']
+    },
+    server: {
+      watch: {
+        usePolling: true
+      }
     }
   },
   piniaPersistedstate: {
