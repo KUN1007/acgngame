@@ -27,7 +27,7 @@ export interface GameDetail {
   publisher: Publisher
   status: string
   tags: string
-  time: string
+  time: Date
   title: string
   views: number
 }

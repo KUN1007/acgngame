@@ -23,6 +23,12 @@ const game = computed(() => data.value?.data)
     <GameIntroduction :intro="game.intro" />
 
     <GameDownload :links="game.download" />
+
+    <div class="comment">
+      <h2>游戏评论</h2>
+
+      <GameComment :id="game.id" />
+    </div>
   </div>
 </template>
 
@@ -34,5 +40,15 @@ const game = computed(() => data.value?.data)
   min-height: calc(100dvh - 75px);
   max-width: 64rem;
   margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 2rem;
+
+  &::before {
+    content: '#';
+    color: var(--gw-deep-color);
+    margin-right: 1rem;
+  }
 }
 </style>

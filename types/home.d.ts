@@ -1,4 +1,4 @@
-import type { GWApi } from './api'
+import type { GWApiData } from './api'
 
 export interface Publisher {
   id: number
@@ -17,15 +17,8 @@ export interface Game {
   tags: string
   is_del: boolean
   git: string
-  time: string
+  time: Date
   status: string
 }
 
-export interface HomeGameData {
-  data: Game[]
-  dataAll: number
-  dataPerPage: number
-  pageNow: number
-}
-
-export type HomeGameResponseData = GWApi<HomeGameData>
+export type HomeGameResponseData = GWApiData<Game[]>
