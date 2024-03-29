@@ -1,3 +1,11 @@
 {
-  "cSpell.words": ["acgngame", "lucide", "Nuxt", "persistedstate", "pinia"]
+  "cSpell.words": [
+    "acgngame",
+    "composables",
+    "Galgame",
+    "lucide",
+    "Nuxt",
+    "persistedstate",
+    "pinia"
+  ]
 }

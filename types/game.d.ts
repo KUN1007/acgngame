@@ -1,20 +1,35 @@
-export interface Publisher {
-  id: number
-  username: string
-  icon: string
-  contribution: number
+import type { GWApi } from './api'
+
+interface DownloadLink {
+  code: string
+  link: string
+  name: string
+  status: boolean
 }
 
-export interface Game {
+interface Publisher {
+  contribution: number
+  group: string
+  icon: string
   id: number
-  title: string
-  image: string
-  publisher: Publisher
-  views: number
-  collects: number
-  tags: string
-  is_del: boolean
-  git: string
-  time: string
-  status: string
+  uid: string
+  username: string
 }
+
+export interface GameDetail {
+  collects: number
+  download: DownloadLink[]
+  gid: string
+  id: number
+  image: string
+  intro: string
+  is_del: boolean
+  publisher: Publisher
+  status: string
+  tags: string
+  time: string
+  title: string
+  views: number
+}
+
+export type GameDetailResponseData = GWApi<GameDetail>

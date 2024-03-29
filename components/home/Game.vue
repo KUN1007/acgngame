@@ -1,22 +1,26 @@
 <script setup lang="ts">
-import type { Game } from '~/types/game'
+import type { HomeGameResponseData } from '~/types/home'
 
 const dayjs = useDayjs()
 
 // TODO:
-const { data } = await useLazyFetch<{
-  data: {
-    data: Game[]
+const { data } = await useFetch<HomeGameResponseData>(
+  'https://gameapi.yukinoshita.tech/game/list/all?page=1',
+  {
+    method: 'GET'
   }
-}>('https://gameapi.yukinoshita.tech/game/list/all?page=1', {
-  method: 'GET'
-})
-const gameData = data.value?.data.data
+)
+const gameData = computed(() => data.value?.data.data)
 </script>
 
 <template>
   <div class="game">
-    <div class="card" v-for="(game, index) in gameData" :key="index">
+    <NuxtLink
+      class="card"
+      v-for="(game, index) in gameData"
+      :key="index"
+      :to="`/game/${game.id}`"
+    >
       <div class="title">{{ game.title }}</div>
       <div class="post">
         <NuxtImg :src="game.image" />
@@ -25,10 +29,8 @@ const gameData = data.value?.data.data
       <!-- TODO: Game introduction text, if necessary -->
       <div class="preview"></div>
 
-      <div class="tags">
-        <Icon name="lucide:tags" />
-        <span v-for="(tag, i) in game.tags.split(',')" :key="i">{{ tag }}</span>
-      </div>
+      <HomeTags :tags="game.tags" />
+
       <div class="status">
         <span class="views">
           <Icon name="lucide:eye" />
@@ -48,7 +50,7 @@ const gameData = data.value?.data.data
           <span>{{ game.publisher.contribution }}</span>
         </div>
       </div>
-    </div>
+    </NuxtLink>
   </div>
 </template>
 
@@ -64,6 +66,7 @@ const gameData = data.value?.data.data
 .card {
   height: 100%;
   border: 2px solid var(--gw-border-color);
+  color: var(--gw-font-color);
   padding: 1rem;
 
   .icon {
@@ -87,18 +90,6 @@ const gameData = data.value?.data.data
       object-fit: cover;
       width: 100%;
     }
-  }
-}
-
-.tags {
-  margin-bottom: 1rem;
-
-  span {
-    border: 1px solid var(--gw-border-color);
-    font-size: small;
-    border-radius: 1rem;
-    padding: 0.1rem 1rem;
-    margin-right: 0.3rem;
   }
 }
 
@@ -144,3 +135,4 @@ const gameData = data.value?.data.data
   }
 }
 </style>
+~/types/home

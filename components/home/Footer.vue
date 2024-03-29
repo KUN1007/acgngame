@@ -51,6 +51,12 @@ const links: Link[] = [
         </NuxtLink>
       </div>
     </footer>
+
+    <div class="powered">
+      由 <NuxtLink to="/">ACGNGAME</NuxtLink> &
+      <a href="https://www.kungal.com" target="_blank"> 鲲 Galgame 论坛 </a>
+      提供支持
+    </div>
   </div>
 </template>
 
@@ -60,7 +66,7 @@ const links: Link[] = [
   padding: 3rem 0;
   width: 100%;
   background-color: var(--gw-deep-color);
-  color: white;
+  color: var(--gw-white);
 }
 
 footer {
@@ -77,12 +83,26 @@ footer {
   a {
     font-size: small;
     margin-bottom: 0.5rem;
-    color: white;
+    color: var(--gw-white);
   }
 
   .title {
     font-size: large;
     margin-bottom: 1rem;
+  }
+}
+
+.powered {
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+
+  a {
+    color: var(--gw-white);
+    margin: 0 0.5rem;
   }
 }
 </style>
