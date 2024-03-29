@@ -1,10 +1,10 @@
 import type { GWApi } from './api'
 
-interface DownloadLink {
-  code: string
+export interface DownloadLink {
   link: string
   name: string
   status: boolean
+  code?: string
 }
 
 interface Publisher {
