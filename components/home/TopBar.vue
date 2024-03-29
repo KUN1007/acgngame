@@ -6,12 +6,14 @@
       <NuxtImg src="/acgngame.png" />
     </div>
 
-    <div class="search">
-      <input type="text" />
-      <button>搜索</button>
-    </div>
+    <div class="func">
+      <div class="search">
+        <input type="text" />
+        <button>搜索</button>
+      </div>
 
-    <div class="user">用户信息</div>
+      <div class="user">用户信息</div>
+    </div>
   </div>
 </template>
 
@@ -28,6 +30,40 @@
   .name {
     img {
       height: 2.5rem;
+    }
+  }
+}
+
+.func {
+  display: flex;
+  align-items: center;
+  height: 4rem;
+
+  .search {
+    margin-right: 4rem;
+  }
+
+  input {
+    border: 1px solid var(--gw-deep-color);
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+
+    &:focus {
+      box-shadow: 0 0 0 1px var(--gw-deep-color);
+      background-color: var(--gw-hover-color);
+    }
+  }
+
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    font-size: medium;
+    margin: 0.5rem 1rem;
+    border-bottom: 2px solid transparent;
+
+    &:hover {
+      border-bottom: 2px solid var(--gw-deep-color);
     }
   }
 }

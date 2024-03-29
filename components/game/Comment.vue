@@ -39,12 +39,15 @@ const comments = computed(() => data.value?.data.data)
         </div>
       </div>
     </div>
+
+    <div class="none" v-if="!comments.length">这里什么都没有。。。</div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .comment {
   display: flex;
+  margin-bottom: 2rem;
 
   img {
     margin-right: 1rem;
@@ -79,5 +82,11 @@ const comments = computed(() => data.value?.data.data)
       }
     }
   }
+}
+
+.none {
+  color: var(--gw-deep-color);
+  font-style: oblique;
+  margin-bottom: 2rem;
 }
 </style>

@@ -72,6 +72,9 @@ onMounted(() => {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    color: var(--gw-deep-color);
+    padding: 0.5rem 1rem;
+    border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5);
     border: none;
     cursor: pointer;

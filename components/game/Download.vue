@@ -24,6 +24,8 @@ defineProps<{
         </span>
       </div>
     </div>
+
+    <div class="none" v-if="!links.length">这里什么都没有。。。</div>
   </div>
 </template>
 
@@ -69,5 +71,11 @@ h2 {
       }
     }
   }
+}
+
+.none {
+  color: var(--gw-deep-color);
+  font-style: oblique;
+  margin-bottom: 2rem;
 }
 </style>
