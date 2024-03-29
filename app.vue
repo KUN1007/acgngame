@@ -4,4 +4,6 @@
   <HomeTopBar />
 
   <NuxtPage />
+
+  <HomeFooter />
 </template>
