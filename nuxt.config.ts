@@ -10,7 +10,6 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@pinia-plugin-persistedstate/nuxt',
     'nuxt-icon',
-    'nuxt-typed-router',
     '@nuxtjs/color-mode',
     'dayjs-nuxt'
   ],
