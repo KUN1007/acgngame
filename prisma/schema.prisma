@@ -1,0 +1,73 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("KUN_DATABASE_URL")
+}
+
+enum Role {
+    SU
+    ADMIN
+    USER
+}
+
+model User {
+    id           Int            @id @default(autoincrement())
+    name         String         @unique
+    avatar       String
+    email        String         @unique
+    password     String
+    ip           String
+    roles        Role           @default(USER)
+    status       Int            @default(0)
+    created      DateTime       @default(now())
+    updated      DateTime       @updatedAt
+    galgame      Galgame[]
+    downloadLink DownloadLink[]
+    comments     Comment[]      @relation("UserComments")
+}
+
+model Galgame {
+    id           Int            @id @default(autoincrement())
+    userId       Int
+    title        String
+    banner       String
+    introduction String
+    views        Int
+    status       Int            @default(0)
+    tags         String[]
+    publisher    User           @relation(fields: [userId], references: [id])
+    downloadLink DownloadLink[]
+    created      DateTime       @default(now())
+    updated      DateTime       @updatedAt
+    comment      Comment[]
+}
+
+model DownloadLink {
+    id        Int      @id @default(autoincrement())
+    userId    Int
+    galgameId Int
+    name      String
+    status    Int      @default(0)
+    code      String?
+    publisher User     @relation(fields: [userId], references: [id])
+    galgame   Galgame  @relation(fields: [galgameId], references: [id])
+    created   DateTime @default(now())
+    updated   DateTime @updatedAt
+}
+
+model Comment {
+    id        String    @id @default(uuid())
+    authorId  Int
+    author    User      @relation("UserComments", fields: [authorId], references: [id])
+    content   String
+    parentId  String?
+    parent    Comment?  @relation("CommentReplies", fields: [parentId], references: [id])
+    replies   Comment[] @relation("CommentReplies")
+    galgameId Int
+    galgame   Galgame   @relation(fields: [galgameId], references: [id])
+    createdAt DateTime  @default(now())
+    updatedAt DateTime  @updatedAt
+}

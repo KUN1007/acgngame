@@ -18,6 +18,17 @@ export default defineNuxtConfig({
     'dayjs-nuxt'
   ],
 
+  runtimeConfig: {
+    KUN_DATABASE_URL: process.env.KUN_DATABASE_URL,
+    REDIS_HOST: process.env.REDIS_HOST,
+    REDIS_PORT: process.env.REDIS_PORT,
+
+    public: {
+      KUN_GALGAME_URL: process.env.KUN_GALGAME_URL,
+      ACGNGAME_URL: process.env.ACGNGAME_URL
+    }
+  },
+
   // Frontend
   css: ['~/assets/css/index.scss'],
 
